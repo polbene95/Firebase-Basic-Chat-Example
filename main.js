@@ -1,38 +1,25 @@
 document.getElementById("login").addEventListener("click", login);
-document.getElementById("create-post").addEventListener("click", function () {
-  writeNewPost();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+document.getElementById("create-post").addEventListener("click", writeNewPost);
 
 getPosts();
 
 
+function login() {
+  console.log("login");
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider);
+}
+
 function writeNewPost() {
-  var title = document.getElementById("title").value;
+
+  var name = document.getElementById("title").value;
   var text = document.getElementById("body").value;
+
+
   // A post entry.
   var postData = {
-    title: title,
-    body: text,
+    title: name,
+    body: text
   };
 
   // Get a key for a new Post.
@@ -42,21 +29,16 @@ function writeNewPost() {
   var updates = {};
   updates['/match1/' + newPostKey] = postData;
 
+
   return firebase.database().ref().update(updates);
 
 }
 
-function getCurrentUserUid() {
-  return firebase.auth().currentUser.uid;
-}
 
-function login() {
-  var provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider);
-}
 
 
 function getPosts() {
+  
   firebase.database().ref('match1').on('value', function (snapshot) {
     var logs = document.getElementById("posts");
     logs.innerHTML = "";
@@ -69,8 +51,7 @@ function getPosts() {
 
       text.append(element.body);
       logs.append(text);
-
-
     }
+
   });
 }
