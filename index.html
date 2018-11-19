@@ -3,43 +3,49 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Team Notes</title>
-
+  <title>Chat Example</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css"> 
 </head>
 
 <body>
 
-  <button id="login">Login!</button>
-  <button id="create-post">Create post!</button>
+  <div class="chat">
+    <div class="advice">
+      You must to be logged
+      <button id="login" class="button is-info">Login!</button>      
+    </div> 
+        <div id="posts" class="box">
+          Loading posts...
+        </div>
 
-  <input id="title" type="text" placeholder="title">
-  <input id="body" type="text" placeholder="Your message...">
-  
-  
-
-  <div id="posts">
-    Posts
+    <div class="inputs">
+      <input id="textInput" class="input" type="text" placeholder="Your message...">
+      <button id="create-post" class="button is-primary">Send</button>
+    </div>
   </div>
 
 
 
+  <!-- CHANGE THIS CODE BY YOURS -->
 
-
-  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
   <script>
+      
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyDCth31rDWdRe6m8gLAXuueYQ4bOj18W2s",
-      authDomain: "nyslwebapp-3853d.firebaseapp.com",
-      databaseURL: "https://nyslwebapp-3853d.firebaseio.com",
-      projectId: "nyslwebapp-3853d",
-      storageBucket: "nyslwebapp-3853d.appspot.com",
-      messagingSenderId: "49622319434"
+      apiKey: "AIzaSyDO1Ja78B7rVR28KJXb2n92RZC05HhgRkY",
+      authDomain: "chat-test-a7e2c.firebaseapp.com",
+      databaseURL: "https://chat-test-a7e2c.firebaseio.com",
+      projectId: "chat-test-a7e2c",
+      storageBucket: "",
+      messagingSenderId: "598225452861"
     };
     firebase.initializeApp(config);
-
   </script>
-  <script type="text/javascript" src="main.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="main2.js"></script>
 
 </body>
 
